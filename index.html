@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real Estate Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        /* Login Box */
+        .login-box {
+            width: 300px;
+            margin: 100px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px gray;
+            border-radius: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+        }
+
+        /* Dashboard */
+        #dashboard {
+            display: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .logout {
+            float: right;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Login Page -->
+<div class="login-box" id="loginBox">
+    <h2>Real Estate Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p class="error" id="errorMsg"></p>
+</div>
+
+<!-- Dashboard -->
+<div class="container" id="dashboard">
+    <button class="logout" onclick="logout()">Logout</button>
+    <h1>Real Estate Land Purchase Records</h1>
+
+    <table>
+        <tr>
+            <th>Buyer Name</th>
+            <th>Purchase Date</th>
+            <th>Price (₹)</th>
+            <th>Land Address</th>
+        </tr>
+
+        <tr>
+            <td>Ramesh Kumar</td>
+            <td>12-03-2023</td>
+            <td>45,00,000</td>
+            <td>Plot No. 21, Whitefield, Bangalore</td>
+        </tr>
+
+        <tr>
+            <td>Anita Sharma</td>
+            <td>05-07-2022</td>
+            <td>60,00,000</td>
+            <td>Sector 45, Gurugram, Haryana</td>
+        </tr>
+
+        <tr>
+            <td>Mohit Verma</td>
+            <td>18-11-2021</td>
+            <td>38,50,000</td>
+            <td>Near NH-48, Jaipur, Rajasthan</td>
+        </tr>
+
+        <tr>
+            <td>Priya Nair</td>
+            <td>25-01-2024</td>
+            <td>72,00,000</td>
+            <td>Kakkanad, Kochi, Kerala</td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    function login() {
+        const user = document.getElementById("username").value;
+        const pass = document.getElementById("password").value;
+
+        // Demo credentials
+        if (user === "admin" && pass === "admin123") {
+            document.getElementById("loginBox").style.display = "none";
+            document.getElementById("dashboard").style.display = "block";
+        } else {
+            document.getElementById("errorMsg").innerText = "Invalid Username or Password";
+        }
+    }
+
+    function logout() {
+        document.getElementById("dashboard").style.display = "none";
+        document.getElementById("loginBox").style.display = "block";
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+        document.getElementById("errorMsg").innerText = "";
+    }
+</script>
+
+</body>
+</html>
