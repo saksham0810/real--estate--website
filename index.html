@@ -2,55 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Real Estate Management System</title>
+    <title>OmSai Real Estate Group</title>
 
     <style>
-        body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: linear-gradient(to right, #eef2f3, #ffffff);
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-        /* Hero Section */
-        .hero {
-            height: 250px;
-            background-image: url("https://images.unsplash.com/photo-1560518883-ce09059eeffa");
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        /* Full Background Image */
+        .background {
+            height: 100vh;
+            width: 100%;
+            background-image: url("https://images.unsplash.com/photo-1501183638710-841dd1904471");
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            text-shadow: 2px 2px 8px black;
         }
 
-        .hero h1 {
-            background: rgba(0,0,0,0.5);
-            padding: 15px 30px;
-            border-radius: 10px;
+        /* Overlay for readability */
+        .overlay {
+            position: absolute;
+            height: 100vh;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.45);
         }
 
-        /* Login Box */
+        /* Login Box (3D look) */
         .login-box {
-            width: 320px;
-            margin: -60px auto 0;
+            position: relative;
+            width: 340px;
             background: white;
-            padding: 25px;
+            padding: 30px;
             border-radius: 15px;
             box-shadow:
-                0 20px 40px rgba(0,0,0,0.2),
+                0 25px 50px rgba(0,0,0,0.4),
                 inset 0 0 10px rgba(255,255,255,0.6);
-            transform: perspective(1000px);
-            transition: transform 0.3s;
-        }
-
-        .login-box:hover {
-            transform: perspective(1000px) translateY(-5px);
+            z-index: 1;
+            text-align: center;
         }
 
         .login-box h2 {
-            text-align: center;
             margin-bottom: 20px;
             color: #333;
         }
@@ -68,46 +67,48 @@
         button {
             width: 100%;
             padding: 12px;
+            margin-top: 10px;
             background: linear-gradient(to right, #007bff, #0056b3);
             color: white;
             border: none;
             border-radius: 8px;
             font-size: 16px;
             cursor: pointer;
-            box-shadow: 0 8px 15px rgba(0,123,255,0.4);
-            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(0,123,255,0.4);
+            transition: 0.3s;
         }
 
         button:hover {
             background: linear-gradient(to right, #0056b3, #003f7f);
-            box-shadow: 0 12px 20px rgba(0,123,255,0.6);
         }
 
         .error {
             color: red;
-            text-align: center;
             margin-top: 10px;
         }
 
         /* Dashboard */
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
         #dashboard {
             display: none;
+            padding: 40px;
+            background: #f4f6f8;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
         }
 
         table {
             width: 100%;
+            max-width: 1000px;
+            margin: auto;
             border-collapse: collapse;
             background: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
         th, td {
@@ -121,12 +122,13 @@
         }
 
         tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: #f2f2f2;
         }
 
         .logout {
-            float: right;
-            padding: 8px 15px;
+            display: block;
+            margin: 0 auto 20px;
+            padding: 10px 20px;
             background: crimson;
             color: white;
             border: none;
@@ -142,22 +144,21 @@
 
 <body>
 
-<!-- Hero Image -->
-<div class="hero">
-    <h1>OmSai Real Estate Group</h1>
+<!-- LOGIN SECTION -->
+<div class="background" id="loginSection">
+    <div class="overlay"></div>
+
+    <div class="login-box">
+        <h2>OmSai Real Estate Group</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <p class="error" id="errorMsg"></p>
+    </div>
 </div>
 
-<!-- Login Page -->
-<div class="login-box" id="loginBox">
-    <h2>Admin Login</h2>
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
-    <p class="error" id="errorMsg"></p>
-</div>
-
-<!-- Dashboard -->
-<div class="container" id="dashboard">
+<!-- DASHBOARD -->
+<div id="dashboard">
     <button class="logout" onclick="logout()">Logout</button>
     <h1>Land Purchase Records</h1>
 
@@ -180,7 +181,7 @@
             <td>Anita Sharma</td>
             <td>05-07-2022</td>
             <td>60,00,000</td>
-            <td>Sector 45, Gurugram</td>
+            <td>Gurugram, Haryana</td>
         </tr>
 
         <tr>
@@ -194,7 +195,7 @@
             <td>Priya Nair</td>
             <td>25-01-2024</td>
             <td>72,00,000</td>
-            <td>Kakkanad, Kochi</td>
+            <td>Kochi, Kerala</td>
         </tr>
     </table>
 </div>
@@ -205,7 +206,7 @@
         const pass = document.getElementById("password").value;
 
         if (user === "admin" && pass === "admin123") {
-            document.getElementById("loginBox").style.display = "none";
+            document.getElementById("loginSection").style.display = "none";
             document.getElementById("dashboard").style.display = "block";
         } else {
             document.getElementById("errorMsg").innerText = "Invalid Username or Password";
@@ -214,7 +215,7 @@
 
     function logout() {
         document.getElementById("dashboard").style.display = "none";
-        document.getElementById("loginBox").style.display = "block";
+        document.getElementById("loginSection").style.display = "flex";
     }
 </script>
 
