@@ -5,161 +5,123 @@
 <title>OmSai Real Estate Group</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
 html, body {
     height: 100%;
     font-family: "Segoe UI", Arial, sans-serif;
 }
 
-/* LOGIN BACKGROUND */
+/* LOGIN */
 .home {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    background-image: url("home-bg.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height:100vh;
+    background:url("home-bg.png") center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
 }
-
-/* OVERLAY */
 .home::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.45);
 }
-
-/* LOGIN CARD */
 .login-box {
-    position: relative;
-    z-index: 2;
-    width: 340px;
-    padding: 35px;
-    background: white;
-    border-radius: 18px;
-    text-align: center;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+    z-index:2;
+    width:340px;
+    background:white;
+    padding:35px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 30px 60px rgba(0,0,0,0.45);
 }
-
-.login-box h2 {
-    margin-bottom: 20px;
-}
-
 .login-box input {
-    width: 100%;
-    padding: 12px;
-    margin: 12px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
 }
-
 .login-box button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 15px;
-    font-size: 16px;
-    color: white;
-    background: linear-gradient(135deg, #007bff, #004ea2);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
+    width:100%;
+    padding:12px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
 }
-
-.error {
-    color: red;
-    margin-top: 10px;
-    font-size: 14px;
-}
+.error { color:red; margin-top:10px; }
 
 /* DASHBOARD */
 #dashboard {
-    display: none;
-    min-height: 100vh;
-    padding: 40px;
-    background: #f4f6f8;
+    display:none;
+    padding:40px;
+    min-height:100vh;
+    background:#f4f6f8;
 }
-
-#dashboard h1 {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-/* GRID FOR 10 SITES */
 .site-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
 }
-
-/* SITE CARD */
 .site-card {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
-
-.site-card h3 {
-    margin-bottom: 15px;
-}
-
 .site-card button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 6px;
-    background: #007bff;
-    color: white;
-    cursor: pointer;
+    margin-top:10px;
+    padding:10px 15px;
+    border:none;
+    border-radius:6px;
+    background:#007bff;
+    color:white;
+    cursor:pointer;
 }
 
-.site-card button:hover {
-    background: #0056b3;
+/* PROJECT PAGE */
+#projectPage {
+    display:none;
+    padding:30px;
+    min-height:100vh;
+    background:#fff;
 }
-
-/* MAP MODAL */
-#mapModal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    z-index: 1000;
+#projectPage h1 {
+    text-align:center;
+    margin-bottom:20px;
 }
-
-#mapContent {
-    background: white;
-    width: 90%;
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 20px;
-    border-radius: 12px;
+#projectPage img {
+    width:100%;
+    max-width:1200px;
+    display:block;
+    margin:0 auto;
+    border-radius:10px;
 }
-
-#mapContent img {
-    width: 100%;
-    border-radius: 10px;
+.back-btn {
+    margin:20px auto;
+    display:block;
+    padding:10px 20px;
+    background:#dc3545;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN SECTION -->
+<!-- LOGIN -->
 <div class="home" id="loginSection">
     <div class="login-box">
         <h2>OmSai Real Estate Group</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
+        <input id="username" placeholder="Username">
+        <input id="password" type="password" placeholder="Password">
         <button onclick="login()">Login</button>
         <div class="error" id="errorMsg"></div>
     </div>
@@ -168,11 +130,10 @@ html, body {
 <!-- DASHBOARD -->
 <div id="dashboard">
     <h1>Our Real Estate Sites</h1>
-
     <div class="site-grid">
         <div class="site-card">
-            <h3>OmSai Greens</h3>
-            <button onclick="openSite()">Click here for full data</button>
+            <h3>GOLDEN ACRE BY DHANMAY SINGH BHADORIA</h3>
+            <button onclick="openProject()">Click here for full data</button>
         </div>
 
         <div class="site-card"><h3>OmSai Heights</h3><button onclick="openSite()">Click here for full data</button></div>
@@ -187,46 +148,35 @@ html, body {
     </div>
 </div>
 
-<!-- MAP MODAL -->
-<div id="mapModal">
-    <div id="mapContent">
-        <h2 style="text-align:center; margin-bottom:15px;">
-            GOLDEN ACRE BY DHANMAY SINGH BHADORIA
-        </h2>
-
-        <img src="golden-acre-map.png" alt="Golden Acre Layout Map">
-
-        <button onclick="closeMap()"
-                style="margin:15px auto 0; display:block; padding:10px 20px;
-                background:#dc3545; color:white; border:none; border-radius:6px; cursor:pointer;">
-            Close
-        </button>
-    </div>
+<!-- PROJECT PAGE -->
+<div id="projectPage">
+    <h1>GOLDEN ACRE BY DHANMAY SINGH BHADORIA</h1>
+    <img src="golden-acre-map.png" alt="Golden Acre Layout">
+    <button class="back-btn" onclick="goBack()">← Back to All Sites</button>
 </div>
 
 <script>
 function login() {
-    const u = document.getElementById("username").value;
-    const p = document.getElementById("password").value;
-
-    if (u === "admin" && p === "omsai123") {
-        document.getElementById("loginSection").style.display = "none";
-        document.getElementById("dashboard").style.display = "block";
+    if (username.value === "admin" && password.value === "omsai123") {
+        loginSection.style.display = "none";
+        dashboard.style.display = "block";
     } else {
-        document.getElementById("errorMsg").innerText = "Invalid Username or Password";
+        errorMsg.innerText = "Invalid Username or Password";
     }
 }
 
 function openSite() {
-    alert("Full site data module will be added later.");
+    alert("This site data will be added later.");
 }
 
-function openMap() {
-    document.getElementById("mapModal").style.display = "block";
+function openProject() {
+    dashboard.style.display = "none";
+    projectPage.style.display = "block";
 }
 
-function closeMap() {
-    document.getElementById("mapModal").style.display = "none";
+function goBack() {
+    projectPage.style.display = "none";
+    dashboard.style.display = "block";
 }
 </script>
 
