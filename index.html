@@ -5,167 +5,129 @@
 <title>OmSai Real Estate Group</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body, html{
-    height:100%;
-    font-family: Arial, sans-serif;
+html, body {
+    height: 100%;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
-/* LOGIN BACKGROUND */
-.background{
+/* FULL SCREEN HOME IMAGE */
+.home {
     position: relative;
-    height:100vh;
-    width:100%;
-    background: url("real-estate-bg.jpg") no-repeat center center;
+    height: 100vh;
+    width: 100%;
+    background-image: url("home-bg.jpg");
     background-size: cover;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* DARK OVERLAY */
-.overlay{
-    position:absolute;
-    top:0;
-    left:0;
-    height:100%;
-    width:100%;
-    background: rgba(0,0,0,0.45);
+.home::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
 }
 
-/* LOGIN BOX */
-.login-box{
+/* 3D LOGIN CARD */
+.login-box {
     position: relative;
     z-index: 2;
-    width:320px;
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    text-align:center;
-    box-shadow:0 25px 50px rgba(0,0,0,0.4);
+    width: 340px;
+    padding: 35px;
+    background: white;
+    border-radius: 18px;
+    text-align: center;
+
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.45),
+        inset 0 2px 8px rgba(255,255,255,0.8);
+
+    transform: perspective(1000px) translateZ(20px);
 }
 
-.login-box h2{
-    margin-bottom:20px;
+/* TITLE */
+.login-box h2 {
+    margin-bottom: 20px;
+    color: #222;
 }
 
-input{
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border-radius:8px;
-    border:1px solid #ccc;
+/* INPUTS */
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
-button{
-    width:100%;
-    padding:12px;
-    background:#007bff;
-    color:white;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:16px;
+/* BUTTON */
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    font-size: 16px;
+    color: white;
+    background: linear-gradient(135deg, #007bff, #004ea2);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    box-shadow: 0 12px 25px rgba(0,123,255,0.5);
+    transition: 0.3s;
 }
 
-button:hover{
-    background:#0056b3;
+.login-box button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 30px rgba(0,123,255,0.7);
 }
 
-.error{
-    color:red;
-    margin-top:10px;
-}
-
-/* DASHBOARD */
-#dashboard{
-    display:none;
-    padding:40px;
-    min-height:100vh;
-    background:#f4f6f8;
-}
-
-table{
-    width:100%;
-    max-width:900px;
-    margin:auto;
-    border-collapse:collapse;
-    background:white;
-    box-shadow:0 10px 20px rgba(0,0,0,0.15);
-}
-
-th, td{
-    padding:12px;
-    text-align:center;
-}
-
-th{
-    background:#007bff;
-    color:white;
-}
-
-.logout{
-    margin-bottom:20px;
-    padding:10px 20px;
-    background:crimson;
-    color:white;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
+/* ERROR TEXT */
+.error {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="background" id="loginSection">
-    <div class="overlay"></div>
-
+<!-- HOME / LOGIN SECTION -->
+<div class="home">
     <div class="login-box">
         <h2>OmSai Real Estate Group</h2>
-        <input id="username" placeholder="Username">
-        <input id="password" type="password" placeholder="Password">
+
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+
         <button onclick="login()">Login</button>
         <div class="error" id="errorMsg"></div>
     </div>
 </div>
 
-<div id="dashboard">
-    <button class="logout" onclick="logout()">Logout</button>
-
-    <table>
-        <tr>
-            <th>Buyer</th>
-            <th>Date</th>
-            <th>Price</th>
-            <th>Address</th>
-        </tr>
-        <tr>
-            <td>Ramesh Kumar</td>
-            <td>12-03-2023</td>
-            <td>₹45,00,000</td>
-            <td>Bangalore</td>
-        </tr>
-    </table>
-</div>
-
 <script>
-function login(){
-    if(username.value==="admin" && password.value==="admin123"){
-        loginSection.style.display="none";
-        dashboard.style.display="block";
+function login() {
+    const u = document.getElementById("username").value;
+    const p = document.getElementById("password").value;
+
+    if (u === "admin" && p === "admin123") {
+        alert("Login Successful");
     } else {
-        errorMsg.innerText="Invalid login";
+        document.getElementById("errorMsg").innerText = "Invalid Username or Password";
     }
-}
-function logout(){
-    dashboard.style.display="none";
-    loginSection.style.display="flex";
 }
 </script>
 
