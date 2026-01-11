@@ -145,10 +145,24 @@ html, body {
 </div>
 
 <script>
+/* FORCE RELOAD ON BACK/FORWARD (fix frozen state) */
+window.addEventListener("pageshow", function (event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+});
+
 function show(section) {
     loginSection.style.display = "none";
     dashboard.style.display = "none";
     projectPage.style.display = "none";
+
+    if (section === loginSection) {
+        username.value = "";
+        password.value = "";
+        errorMsg.innerText = "";
+    }
+
     section.style.display = "block";
 }
 
