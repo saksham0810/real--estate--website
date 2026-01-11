@@ -166,7 +166,10 @@ function login() {
     const p = document.getElementById("password").value;
 
     if (u === "admin" && p === "omsai123") {
+        // Hide login page
         document.getElementById("loginSection").style.display = "none";
+        
+        // Show dashboard
         document.getElementById("dashboard").style.display = "block";
     } else {
         document.getElementById("errorMsg").innerText = "Invalid Username or Password";
@@ -174,9 +177,10 @@ function login() {
 }
 
 function openSite() {
-    alert("Full site data module will be added later.");
+    alert("This will open full site data later.");
 }
 </script>
+
 
 </body>
 </html>
