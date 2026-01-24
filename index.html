@@ -5,8 +5,8 @@
 <title>OmSai Real Estate Group – Golden Acre</title>
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:Segoe UI, Arial, sans-serif; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Segoe UI,Arial}
 
 /* ---------- LOGIN ---------- */
 .home{
@@ -21,75 +21,58 @@ body { font-family:Segoe UI, Arial, sans-serif; }
     content:"";
     position:absolute;
     inset:0;
-    background:rgba(0,0,0,0.45);
+    background:rgba(0,0,0,.45);
 }
 .login-box{
     z-index:2;
-    width:340px;
     background:#fff;
-    padding:30px;
-    border-radius:14px;
-    text-align:center;
+    padding:25px;
+    width:320px;
+    border-radius:12px;
 }
-.login-box input, .login-box button{
+.login-box input,.login-box button{
     width:100%;
-    padding:12px;
+    padding:10px;
     margin-top:10px;
 }
-.login-box button{
-    background:#007bff;
-    color:#fff;
-    border:none;
-    cursor:pointer;
-}
-.error{color:red;margin-top:10px}
 
 /* ---------- DASHBOARD ---------- */
 #dashboard{display:none;padding:40px}
-.site-card{
-    background:#fff;
-    padding:25px;
-    border-radius:12px;
-    width:320px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
-.site-card button{
-    margin-top:15px;
-    padding:10px;
-    width:100%;
-}
 
 /* ---------- PROJECT ---------- */
 #projectPage{display:none;padding:30px}
+
 .map-wrapper{
     position:relative;
     max-width:1200px;
     margin:auto;
 }
-.map-wrapper img{width:100%;border-radius:10px}
+.map-wrapper img{
+    width:100%;
+    display:block;
+}
 
-/* PLOT BOX */
-.plot{
-    position:absolute;
-    background:rgba(0,123,255,0.25);
-    border:2px solid rgba(0,123,255,0.9);
+/* ---------- SVG PLOTS (INVISIBLE) ---------- */
+.plot-shape{
+    fill: transparent;
+    stroke: transparent;
     cursor:pointer;
 }
 
-/* TOOLTIP */
+/* ---------- TOOLTIP ---------- */
 .tooltip{
     position:absolute;
     background:#222;
     color:#fff;
-    padding:10px;
-    border-radius:6px;
+    padding:8px;
     font-size:13px;
+    border-radius:6px;
     display:none;
     pointer-events:none;
-    z-index:1000;
+    z-index:999;
 }
 
-/* EDIT PANEL */
+/* ---------- EDIT PANEL ---------- */
 #editPanel{
     position:fixed;
     right:20px;
@@ -97,18 +80,11 @@ body { font-family:Segoe UI, Arial, sans-serif; }
     background:#fff;
     padding:15px;
     width:260px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
     display:none;
 }
-#editPanel input{
-    width:100%;
-    padding:8px;
-    margin-top:6px;
-}
-#editPanel button{
-    margin-top:10px;
-    width:100%;
-}
+#editPanel input{width:100%;margin-top:6px;padding:6px}
+#editPanel button{margin-top:8px;width:100%}
 </style>
 </head>
 
@@ -116,40 +92,66 @@ body { font-family:Segoe UI, Arial, sans-serif; }
 
 <!-- LOGIN -->
 <div class="home" id="loginSection">
-    <div class="login-box">
-        <h2>OmSai Real Estate Group</h2>
-        <input id="username" placeholder="Username">
-        <input id="password" type="password" placeholder="Password">
-        <button onclick="login()">Login</button>
-        <div class="error" id="errorMsg"></div>
-    </div>
+<div class="login-box">
+<h3>Login</h3>
+<input id="username" placeholder="Username">
+<input id="password" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+<div id="errorMsg" style="color:red"></div>
+</div>
 </div>
 
 <!-- DASHBOARD -->
 <div id="dashboard">
-    <div class="site-card">
-        <h3>GOLDEN ACRE</h3>
-        <button onclick="openProject()">Open Layout</button>
-    </div>
+<button onclick="openProject()">Open Golden Acre Layout</button>
 </div>
 
-<!-- PROJECT -->
+<!-- PROJECT PAGE -->
 <div id="projectPage">
-<h2 style="text-align:center;margin-bottom:20px">
-GOLDEN ACRE BY DHANMAY SINGH BHADORIA
-</h2>
+<h2 style="text-align:center;margin-bottom:20px">Golden Acre Layout</h2>
 
 <div class="map-wrapper">
+
 <img src="golden-acre-map.png">
 
-<!-- SAMPLE PLOTS (pattern applies to all 119) -->
-<div class="plot" style="top:60%;left:20%;width:6%;height:10%" data-id="P1"></div>
-<div class="plot" style="top:60%;left:27%;width:6%;height:10%" data-id="P2"></div>
-<div class="plot" style="top:60%;left:34%;width:6%;height:10%" data-id="P3"></div>
+<!-- SVG overlay -->
+<svg viewBox="0 0 1200 600"
+     style="position:absolute;top:0;left:0;width:100%;height:100%">
 
-<div class="plot" style="top:30%;left:10%;width:4%;height:6%" data-id="LIG1"></div>
-<div class="plot" style="top:25%;left:15%;width:4%;height:6%" data-id="SR1"></div>
-<div class="plot" style="top:70%;left:45%;width:4%;height:6%" data-id="EWS1"></div>
+<!-- ===== FIRST 10 PLOTS 81–90 ===== -->
+<!-- coordinates manually traced to match shape -->
+
+<polygon class="plot-shape" data-id="P81"
+points="150,210 210,205 210,260 150,265"/>
+
+<polygon class="plot-shape" data-id="P82"
+points="210,205 270,200 270,255 210,260"/>
+
+<polygon class="plot-shape" data-id="P83"
+points="270,200 330,195 330,250 270,255"/>
+
+<polygon class="plot-shape" data-id="P84"
+points="330,195 390,190 390,245 330,250"/>
+
+<polygon class="plot-shape" data-id="P85"
+points="390,190 450,185 450,240 390,245"/>
+
+<polygon class="plot-shape" data-id="P86"
+points="450,185 510,180 510,235 450,240"/>
+
+<polygon class="plot-shape" data-id="P87"
+points="510,180 570,175 570,230 510,235"/>
+
+<polygon class="plot-shape" data-id="P88"
+points="570,175 630,170 630,225 570,230"/>
+
+<polygon class="plot-shape" data-id="P89"
+points="630,170 690,165 690,220 630,225"/>
+
+<polygon class="plot-shape" data-id="P90"
+points="690,165 750,160 750,215 690,220"/>
+
+</svg>
 
 <div class="tooltip" id="tooltip"></div>
 </div>
@@ -159,63 +161,58 @@ GOLDEN ACRE BY DHANMAY SINGH BHADORIA
 <div id="editPanel">
 <h4>Edit Plot</h4>
 <input id="eOwner" placeholder="Owner">
-<input id="ePrice" placeholder="Total Price">
+<input id="ePrice" placeholder="Price">
 <input id="ePaid" placeholder="Paid">
 <input id="ePending" placeholder="Pending">
 <button onclick="saveEdit()">Save</button>
 </div>
 
 <script>
-/* ---------- DATA ---------- */
-const plotData = {};
-for(let i=1;i<=104;i++){
-    plotData["P"+i]={owner:"Owner "+i,price:"₹12,00,000",paid:"₹6,00,000",pending:"₹6,00,000"};
-}
-for(let i=1;i<=5;i++){
-    plotData["EWS"+i]={owner:"EWS Owner "+i,price:"₹4,00,000",paid:"₹2,00,000",pending:"₹2,00,000"};
-}
-for(let i=1;i<=6;i++){
-    plotData["LIG"+i]={owner:"LIG Owner "+i,price:"₹6,00,000",paid:"₹3,00,000",pending:"₹3,00,000"};
-}
-for(let i=1;i<=4;i++){
-    plotData["SR"+i]={owner:"SR Owner "+i,price:"₹9,00,000",paid:"₹4,50,000",pending:"₹4,50,000"};
-}
-
 /* ---------- LOGIN ---------- */
 function login(){
     if(username.value==="admin" && password.value==="omsai123"){
         loginSection.style.display="none";
         dashboard.style.display="block";
-    }else{
-        errorMsg.innerText="Invalid login";
-    }
+    }else errorMsg.innerText="Invalid";
 }
 function openProject(){
     dashboard.style.display="none";
     projectPage.style.display="block";
 }
 
+/* ---------- DATA ---------- */
+const plotData={};
+for(let i=81;i<=90;i++){
+    plotData["P"+i]={
+        owner:"Owner "+i,
+        price:"₹12,00,000",
+        paid:"₹6,00,000",
+        pending:"₹6,00,000"
+    };
+}
+
 /* ---------- TOOLTIP + EDIT ---------- */
 const tooltip=document.getElementById("tooltip");
-let currentPlot=null;
+let current=null;
 
-document.querySelectorAll(".plot").forEach(p=>{
+document.querySelectorAll(".plot-shape").forEach(p=>{
     p.addEventListener("mousemove",e=>{
         const d=plotData[p.dataset.id];
         tooltip.style.display="block";
-        tooltip.style.left=e.pageX+15+"px";
-        tooltip.style.top=e.pageY+15+"px";
+        tooltip.style.left=e.pageX+10+"px";
+        tooltip.style.top=e.pageY+10+"px";
         tooltip.innerHTML=`<b>${p.dataset.id}</b><br>
         Owner: ${d.owner}<br>
         Price: ${d.price}<br>
         Paid: ${d.paid}<br>
         Pending: ${d.pending}`;
     });
+
     p.addEventListener("mouseleave",()=>tooltip.style.display="none");
 
     p.addEventListener("click",()=>{
-        currentPlot=p.dataset.id;
-        const d=plotData[currentPlot];
+        current=p.dataset.id;
+        const d=plotData[current];
         eOwner.value=d.owner;
         ePrice.value=d.price;
         ePaid.value=d.paid;
@@ -225,7 +222,7 @@ document.querySelectorAll(".plot").forEach(p=>{
 });
 
 function saveEdit(){
-    plotData[currentPlot]={
+    plotData[current]={
         owner:eOwner.value,
         price:ePrice.value,
         paid:ePaid.value,
